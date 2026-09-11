@@ -7,14 +7,31 @@ def consultar_saldo():
 
 def depositar():
     global saldo
-    valor = float(input("Valor do deposito: R$ "))
+    try:
+        valor = float(input("Valor do deposito: R$ "))
+    except ValueError:
+        print("Valor invalido.")
+        return
+    if valor <= 0:
+        print("O valor precisa ser maior que zero.")
+        return
     saldo += valor
     print(f"Deposito de R$ {valor:.2f} realizado. Saldo: R$ {saldo:.2f}")
 
 
 def sacar():
     global saldo
-    valor = float(input("Valor do saque: R$ "))
+    try:
+        valor = float(input("Valor do saque: R$ "))
+    except ValueError:
+        print("Valor invalido.")
+        return
+    if valor <= 0:
+        print("O valor precisa ser maior que zero.")
+        return
+    if valor > saldo:
+        print("Saldo insuficiente.")
+        return
     saldo -= valor
     print(f"Saque de R$ {valor:.2f} realizado. Saldo: R$ {saldo:.2f}")
 
