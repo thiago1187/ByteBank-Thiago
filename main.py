@@ -1,5 +1,6 @@
 import contas
 import operacoes
+import extrato
 
 
 def menu_conta(conta):
@@ -10,7 +11,9 @@ def menu_conta(conta):
         print("2 - Depositar")
         print("3 - Sacar")
         print("4 - Pix")
-        print("5 - Voltar")
+        print("5 - Ver extrato")
+        print("6 - Estornar ultima transacao")
+        print("7 - Voltar")
         opcao = input("Escolha uma opcao: ")
         if opcao == "1":
             contas.mostrar_saldo(conta)
@@ -21,6 +24,10 @@ def menu_conta(conta):
         elif opcao == "4":
             operacoes.pix(conta)
         elif opcao == "5":
+            extrato.mostrar_extrato(conta)
+        elif opcao == "6":
+            extrato.estornar(conta)
+        elif opcao == "7":
             break
         else:
             print("Opcao invalida.")

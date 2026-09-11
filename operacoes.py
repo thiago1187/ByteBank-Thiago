@@ -1,4 +1,5 @@
 import contas
+import extrato
 
 
 def depositar(conta):
@@ -11,6 +12,7 @@ def depositar(conta):
         print("O valor precisa ser maior que zero.")
         return
     conta["saldo"] += valor
+    extrato.registrar(conta, "deposito", valor, None)
     print(f"Deposito de R$ {valor:.2f} realizado. Saldo: R$ {conta['saldo']:.2f}")
 
 
@@ -27,6 +29,7 @@ def sacar(conta):
         print("Saldo insuficiente.")
         return
     conta["saldo"] -= valor
+    extrato.registrar(conta, "saque", valor, None)
     print(f"Saque de R$ {valor:.2f} realizado. Saldo: R$ {conta['saldo']:.2f}")
 
 
@@ -52,4 +55,5 @@ def pix(conta):
         return
     conta["saldo"] -= valor
     destino["saldo"] += valor
+    extrato.registrar(conta, "pix", valor, destino["chave_pix"])
     print(f"Pix de R$ {valor:.2f} enviado para {destino['nome']}. Saldo: R$ {conta['saldo']:.2f}")
