@@ -1,33 +1,5 @@
 import contas
-
-
-def depositar(conta):
-    try:
-        valor = float(input("Valor do deposito: R$ "))
-    except ValueError:
-        print("Valor invalido.")
-        return
-    if valor <= 0:
-        print("O valor precisa ser maior que zero.")
-        return
-    conta["saldo"] += valor
-    print(f"Deposito de R$ {valor:.2f} realizado. Saldo: R$ {conta['saldo']:.2f}")
-
-
-def sacar(conta):
-    try:
-        valor = float(input("Valor do saque: R$ "))
-    except ValueError:
-        print("Valor invalido.")
-        return
-    if valor <= 0:
-        print("O valor precisa ser maior que zero.")
-        return
-    if valor > conta["saldo"]:
-        print("Saldo insuficiente.")
-        return
-    conta["saldo"] -= valor
-    print(f"Saque de R$ {valor:.2f} realizado. Saldo: R$ {conta['saldo']:.2f}")
+import operacoes
 
 
 def menu_conta(conta):
@@ -42,9 +14,9 @@ def menu_conta(conta):
         if opcao == "1":
             contas.mostrar_saldo(conta)
         elif opcao == "2":
-            depositar(conta)
+            operacoes.depositar(conta)
         elif opcao == "3":
-            sacar(conta)
+            operacoes.sacar(conta)
         elif opcao == "4":
             break
         else:
