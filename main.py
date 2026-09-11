@@ -9,7 +9,8 @@ def menu_conta(conta):
         print("1 - Consultar saldo")
         print("2 - Depositar")
         print("3 - Sacar")
-        print("4 - Voltar")
+        print("4 - Pix")
+        print("5 - Voltar")
         opcao = input("Escolha uma opcao: ")
         if opcao == "1":
             contas.mostrar_saldo(conta)
@@ -18,6 +19,8 @@ def menu_conta(conta):
         elif opcao == "3":
             operacoes.sacar(conta)
         elif opcao == "4":
+            operacoes.pix(conta)
+        elif opcao == "5":
             break
         else:
             print("Opcao invalida.")
